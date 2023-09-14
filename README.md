@@ -31,6 +31,6 @@ If you have any questions, feedback, or need assistance, please don't hesitate t
   
   marichka.horodyska@lnu.edu.ua
   
-
+  sofiia.yevush@lnu.edu.ua
 
 Thank you for choosing Speakify - your ultimate podcast listening companion!
