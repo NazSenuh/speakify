@@ -1,0 +1,42 @@
+CREATE TABLE roles ( 
+    user_role VARCHAR (50) PRIMARY KEY 
+); 
+ 
+
+CREATE TABLE users ( 
+    user_id SERIAL PRIMARY KEY,
+    user_name VARCHAR (90) NOT NULL, 
+    email VARCHAR (50) NOT NULL, 
+    user_password VARCHAR (90) NOT NULL, 
+    user_role VARCHAR (50) NOT NULL, 
+    FOREIGN KEY (user_role) REFERENCES roles(user_role) 
+);
+
+CREATE TABLE tracks ( 
+    track_id SERIAL PRIMARY KEY, 
+ track_name VARCHAR (50) NOT NULL, 
+ publication_date TIMESTAMP, 
+ track_file VARCHAR (250) NOT NULL, 
+ likes_count INT, 
+ track_comment TEXT 
+); 
+ 
+CREATE TABLE track_comments ( 
+    track_comment TEXT, 
+    track_id INT, 
+ user_id INT, 
+ FOREIGN KEY (track_id) REFERENCES tracks (track_id), 
+ FOREIGN KEY (user_id) REFERENCES users (user_id) 
+); 
+ 
+CREATE TABLE likes ( 
+ like_id SERIAL PRIMARY KEY, 
+    track_id INT, 
+ user_id INT, 
+ FOREIGN KEY (track_id) REFERENCES tracks (track_id), 
+ FOREIGN KEY (user_id) REFERENCES users (user_id) 
+);
+INSERT INTO roles (user_role) VALUES ('Admin');
+INSERT INTO roles (user_role) VALUES ('User');
+ALTER TABLE users
+ALTER COLUMN user_id SET DEFAULT nextval('users_user_id_seq'::regclass);
